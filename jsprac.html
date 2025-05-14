@@ -8,6 +8,19 @@
 </head>
 
 <body>
+    <h2 id="title1">Welcome</h2>
+    <p class="msg">Hello There</p>
+    <p> Ha randi randi , kurchondi, Tea ivvandi </p>
+
+    <h1 id="mainTitle">Hello</h1>
+    <p class="desc">This is a Paragraph</p>
+    <p class="desc">This is another Paragraph</p>
+    <button id="clickbtn">Click me!</button>
+    <button id="greet">Greet</button>
+
+    <input id="field" placeholder="Enter your Name ">
+    <button id="subbut">Submit</button>
+    <p id="ptag"></p>
     <script>
         //alert("Hello")
         // Variables 
@@ -347,7 +360,7 @@
         // Challenges 
         // Write a function introduce with parameters name (default = "Anonymous") and job (default = "Unknown") and print a message using template literals.
 
-        function introduce(name = "Anonymous", job="Unknown") {
+        function introduce(name = "Anonymous", job = "Unknown") {
             console.log(`Hi, My name is ${name} and i am working as a ${job}`)
         }
         introduce("Sai", "Developer")
@@ -355,13 +368,240 @@
 
         //Use short syntax to create an object car with variables brand, model, and a method start() that prints “Starting...”.
         let car = {
-            brand : "Tata",
-            model : "xyz",
+            brand: "Tata",
+            model: "xyz",
             start() {
                 console.log("Starting.....")
             }
         }
         car.start()
+
+        // Enhanced object literals 
+        // property shorthand 
+        const name2 = "Sai";
+        const age2 = 25;
+
+        const person2 = { name2, age2 };
+        console.log(person2)
+
+        let role1 = "admin"
+        let user1 = {
+            [role]: true,
+            name: "Sai"
+        }
+        console.log(user1)
+
+        //Challenge
+        //Create an object game using enhanced object literals with:
+        // A property using key as the dynamic property name.
+        // A regular property name with value "BattleZone". 
+        let key = "level";
+        let value = "Pro";
+        const game = {
+            [key]: value,
+            name: "BattleZone"
+        }
+        console.log(game)
+
+        const laptop = {
+            brand: "hp",
+            price: 199999,
+            info: function () {
+                console.log(`This is a ${this.brand} and costs ${this.price}`)
+            }
+        }
+        laptop.info()
+
+
+        // class challenge 
+        class Book {
+            constructor(title, author) {
+                this.title = title
+                this.author = author
+            }
+            get_summary() {
+                console.log(`Book: ${this.title} by ${this.author}`)
+            }
+        }
+        const p1 = new Book("The Wet Pillow", "Sai Venkata Raja")
+        p1.get_summary()
+
+
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width
+                this.height = height
+            }
+            area() {
+                let area = this.width * this.height
+                console.log(`The area is ${area}`)
+            }
+            isSquare() {
+                return this.width === this.height
+            }
+        }
+        const c1 = new Rectangle(12, 12)
+        c1.area()
+        console.log(c1.isSquare())
+
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            greet() {
+                console.log(`Hello, my name is ${this.name} and I am ${this.age} years old`)
+            }
+        }
+        // Inheritance 
+        class Employee extends Person {
+            constructor(name, age, role) {
+                super(name, age)
+                this.role = role
+            }
+            describe() {
+                console.log(`I am ${this.name}, working as a ${role}`)
+            }
+        }
+        p2 = new Person("Sai", 25)
+        p2.greet()
+
+        const emp1 = new Employee("Raja", 30, "Developer")
+        emp1.greet()
+        emp1.describe()
+
+
+        // DOM 
+        const title1 = document.getElementById("title1");
+        console.log(title1.textContent)
+        const message = document.getElementsByClassName("msg")
+        console.log(message[0].textContent)
+
+        const allps = document.getElementsByTagName("p")
+        console.log(allps.length)
+
+        const heading = document.querySelector("h2")
+        console.log(heading.innerText)
+
+        const allMsgs = document.querySelectorAll(".msg");
+        allMsgs.forEach(el => console.log(el.textContent));
+
+        //Challenge 
+        const text = document.getElementById("mainTitle")
+        console.log(text.textContent)
+
+        const q = document.querySelectorAll('.desc')
+        q.forEach(el => console.log(el.textContent))
+
+        document.getElementById("mainTitle").textContent = "JavaScript DOM Master !";
+
+        const title2 = document.getElementById("mainTitle");
+        title2.style.color = "green";
+        title2.style.fontSize = "36px";
+
+        document.getElementsByTagName('p')[0].textContent = "Updated paragraph 1"
+
+        const newPara = document.createElement('p')
+        newPara.textContent = "I was created using JS "
+        document.body.appendChild(newPara)
+
+        // Challenge 
+        const newHead = document.createElement('h2')
+        newHead.textContent = "Dynamically added Header "
+        newHead.style.color = 'purple'
+        document.body.appendChild(newHead)
+
+
+        const head2 = document.createElement('h2')
+        head2.textContent = "Something , there is something"
+        document.body.appendChild(head2)
+
+        //event handling 
+        const btn = document.getElementById("clickbtn")
+        btn.addEventListener("click", () => {
+            alert("Button was clicked !")
+        })
+
+        // Challenge 
+        const greet2 = document.getElementById('greet')
+        greet2.addEventListener("click", () => {
+            alert("Hello from JavaScript")
+        })
+
+        //challenge form handling and input fields 
+        const input = document.getElementById("field")
+        const button = document.getElementById("subbut")
+        const output = document.getElementById('ptag')
+
+        button.addEventListener("click", () => {
+            output.textContent = `Welcome, ${input.value}`
+        })
+
+        var x = 1
+        var x = 6
+        console.log(x)
+        let y = 2
+        //let y = 3 
+        console.log(y)
+        const z = 6
+        //const z =7 
+        console.log(z)
+
+        //Error Handling
+
+        function divide(a, b) {
+            try {
+                if (b == 0) {
+                    throw new Error("Division by zero is not allowed ")
+                }
+                return a / b
+            } catch (error) {
+                console.error(error.message)
+            } finally {
+                console.log("This will run")
+            }
+        }
+        console.log(divide(4, 2))
+        console.log(divide(4, 0))
+
+        // challenge 
+        function sumArray(arr) {
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]
+            }
+            return sum;
+        }
+        console.log(sumArray([1, 2, 3]))
+
+        //setTimeout
+        console.log("Start");
+        setTimeout(() => {
+            console.log("This is delayed");
+        }, 10000);
+        console.log("End");
+
+
+        // SetInterval
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     </script>
 
 </body>

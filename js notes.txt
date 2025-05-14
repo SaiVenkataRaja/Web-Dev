@@ -293,3 +293,138 @@ greet("Sai")
     let username = "Sai"
     let role = "Developer" 
     console.log(`Hello, ${username}, you are a ${role}`)
+
+
+-------------- Enhanced Object literals 
+This allows you to:
+    Use variables directly as property names.
+    Define methods without the function keyword.
+    Use computed property names dynamically.
+
+-------------- Computed property name 
+Use an expression as a property name in an object by wrapping it in [].
+let role = "admin"
+let user = {
+    [role] : true,
+    name : "Sai"
+}
+console.log(user)
+
+
+--------------- Classes 
+Js Classes are a template for creating objects , they use constructor methods and support inheritance, just like oops
+class person {
+    constructor(name, age) {
+        this.name = name
+        this.age = age 
+    }
+    greet() {
+        console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old.`)
+    }
+}
+const p1 = new person("Sai", 26)
+p1.greet()
+
+inheritance - aquaring properties from parent to child 
+
+
+
+
+
+
+----------------- DOM Manipulation ----------------
+DOM stands for Document Object Model, Represents the page structure as a tree of objects.
+
+Selecting elements : 
+    getElementById(), getElementByClassName(), getElementByTagName(), querySelectors(), querySelectorAll()
+
+Changing Content: 
+    textContent, innerText, innerHTML
+
+Changing styles :
+    .style.property = value
+
+Changing Attributes : 
+    getAttribute(), setAttribute(), removeAttribute()
+
+Creating & Appending Elements : 
+    createElement(), appendChild(), insertBefore()
+
+Removing Elements:
+    removeChild()
+
+Event Listeners :
+    addEventListener("click", function)
+
+Common Events :
+    click, mouseover, keydown, submit, etc.
+
+Event Object : 
+    Access event.target, event.type, event.key, etc.
+
+Modifying elements (text, HTML, Styles )
+Changing Text Content : document.getElementById("mainTitle").textContent = "Welcome, Sai!";
+Changing Inner HTML (e.g., adding bold) : document.getElementById("mainTitle").innerHTML = "<em>Dynamic Heading</em>";
+Changing CSS Styles with JavaScript : const title = document.getElementById("mainTitle");
+                                        title.style.color = "blue";
+                                        title.style.fontSize = "30px";
+ -> Creating and Appending Elements
+        const newPara = document.createElement("p");
+        newPara.textContent = "I was created using JS!";
+        document.body.appendChild(newPara);
+
+
+-------------- Event Handling --
+<button id="clickBtn">Click Me!</button>
+<script>
+  const btn = document.getElementById("clickBtn");
+  btn.addEventListener("click", () => {
+    alert("Button was clicked!");
+  });
+</script>
+
+----------- Form handling and input fields 
+<input type="text" id="username" placeholder="Enter your name">
+<button id="submitBtn">Submit</button>
+<p id="displayName"></p>
+
+<script>
+  const input = document.getElementById("username");
+  const button = document.getElementById("submitBtn");
+  const output = document.getElementById("displayName");
+
+  button.addEventListener("click", () => {
+    output.textContent = `Hello, ${input.value}`;
+  });
+</script>
+
+
+---------------- Error Handling and debugging 
+try { 
+
+} catch(Error) {
+
+} finally {
+    This gets executed regardless of whether an error occurred or not 
+
+}
+
+
+
+------------ Asynchronous JavaScript 
+a crucial part of JS that deals with non-blocking operations like fetching data from APIs, timeouts, and event handling.
+
+-> setTimeout : executes a function after a delay (in milliseconds )
+    console.log("Start");
+    setTimeout(() => {
+        console.log("This is delayed");
+    }, 2000);
+    console.log("End");
+
+-> SetInterval : repeats execution every given delay 
+    let count = 0;
+    const timer = setInterval(() => {
+        console.log("Repeating:", ++count);
+        if (count === 3) clearInterval(timer);
+    }, 1000);
+
