@@ -1,0 +1,295 @@
+Javascript is a scripting language used to create dynamic, interactive behavious on websites
+Js can manipulate HTML and CSS 
+
+--------- Variables 
+Variable is a container for storing data like numbers, strings, objects etc
+Declaring variables using var, let const  
+| Keyword | Scope    | Reassignable| Hoisted   | Notes                           |
+| ------- | -------- | ------------| -------   | ------------------------------- |
+| `var`   | Function | ✅ Yes      | ✅ Yes   | Avoid in modern code            |
+| `let`   | Block    | ✅ Yes      | ❌ No    | Best for reassignable variables |
+| `const` | Block    | ❌ No       | ❌ No    | Use when value shouldn't change |
+
+--------- Data types 
+There are two categories in datatypes 
+1. Primitive (Immutable - stored by value) 
+    String, Number, Boolean, Undefined, null, BigInt, Symbol
+2. Reference (Mutable - stored by reference)
+    Object, Array, Function 
+
+typeof checks the type of data 
+
+--------- Type conversion 
+implicit and explicit coversion 
+Implicit type conversion converts the type automatically
+Explicit type conversion needs to convert manually
+
+--------- Operators 
+Arithmetic Operators : +, -, *, /, %, **
+Assignment Operators : =, +=, -=, *=, /=
+Comparision Operators : ==, ===, !=, !==, >, <, >=, <=
+Logical Operators : &&, ! , `
+Ternery operator :  Shortcut for if-else -> condition ? value_if_true : value_if_value
+
+--------- Control Flows 
+Control flows lets your code decide what to do based on conditions : if, elseif, else 
+        num = 4
+        // if (num > 0) {
+        //     console.log("Positive")
+        // } else if (num < 0 ) {
+        //     console.log("Negative")
+        // } else {
+        //     console.log("Zero")
+        // }
+Switch statement 
+        let color = "blue";
+
+        switch (color) {
+        case "red":
+            console.log("Color is Red");
+            break;
+        case "blue":
+            console.log("Color is Blue");
+            break;
+        case "green":
+            console.log("Color is Green");
+            break;
+        default:
+            console.log("Color not recognized");
+        }
+
+Ternery operator 
+
+--------- Loops 
+Loops helps to repeat actions with writing repetitive code : for , while, do-while , for..of(arrays) , for..in(objects)
+for(let i = 0; i< 5; i++) {
+    console.log(i)
+}
+while : runs as long as the condition is true
+let i = 0
+while (i<5) {
+    console.log(i);
+    i++;
+}
+
+do-while : runs the loops at least once,even if the condition is false 
+let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i<5)
+
+for..of :
+let fruits = ["apple","banana","cherry"]
+for(let fruit of fruits) {
+    console.log(fruit)
+} 
+
+for in :
+let person = {
+    name : "Sai",
+    age : 25
+}
+for (let key in person) {
+    console.log(key, person[key])
+}
+
+
+------------ Functions 
+Funtions are blocks of code designed to perform a specific task, you can reuse them anywhere
+1. function declaration
+    function greet(name) {
+        console.log("Hello" + name + "!")
+    } 
+    greet("Sai")
+
+2. Function with return 
+    function add(a,b) {
+        return a+b;
+    }
+    let sum = add(3,5)
+    console.log(sum)
+
+3. Function Expresssion 
+    const multiply = function(x,y) {
+        return x*y
+    }
+    console.log(multiply(2,4))
+
+4. Arrow functions 
+    const sq = x => x*x;
+    console.log(sq(5))
+
+
+
+----------- Scopes and Hoisting 
+Scope is where variable lives 
+There are three types of scopes Global, Functional, Block
+
+Global - Declared outside any function or block and can be accessed anywhere 
+        let a = 10;
+        function show() {
+        console.log(a); // Can access 'a'
+        }
+Function - Variables declared inside a function are only accessible inside that function
+        function test() {
+        let b = 20;
+            console.log(b); // OK
+            }
+        console.log(b);
+
+Block (let, const ) - let and const are blocked scopes 
+        if (true) {
+            let c = 30;
+            const d = 40;
+        }
+        console.log(c); 
+        console.log(d);
+
+--- Hoisting 
+Js moves declarations to the top of their scopes before code runs , this is known as Hoisting
+Ex : var 
+console.log(x)
+var x =5 
+let and const cannot be hoisted 
+
+
+----------------- Arrays and Array methods 
+Arrays stored ordered collection of items 
+let fruits = ['apple','banana','mango']
+console.log(fruits[0])
+-- Array methods 
+| Method       | Description                             |
+| ------------ | --------------------------------------- |
+| `push()`     | Add item to end                         |
+| `pop()`      | Remove item from end                    |
+| `shift()`    | Remove item from start                  |
+| `unshift()`  | Add item to start                       |
+| `indexOf()`  | Get index of an item                    |
+| `includes()` | Check if value exists                   |
+| `join()`     | Combine into string                     |
+| `slice()`    | Extract part of array (doesn’t modify)  |
+| `splice()`   | Add/remove elements (modifies original) |
+| `forEach()`  | Loop through array                      |
+| `map()`      | Transform array values                  |
+| `filter()`   | Filter based on condition               |
+
+
+------------------------ Objects 
+Objects are used to store in key-value pairs. they allows us to group related data and functions together 
+    let person = {
+    name: "Sai",
+    age: 25,
+    isEmployed: true
+    };
+
+Accessing object properties 
+console.log(person.name)
+console.log(person["age"])
+
+person.age = 26; //modify
+person.location = "Hyderabad" //Add
+delete person.isEmployed //delete
+
+Methods (functions inside objects)
+let car = {
+    brand : "Toyota",
+    start : function() {
+        console.log("Car started")
+    }
+}
+car.start()
+
+this keyword 
+let user = {
+  name: "Sai",
+  greet: function () {
+    console.log("Hello, " + this.name);
+  }
+};
+
+user.greet();  // Hello, Sai
+
+
+---------------------- Destructuring 
+
+Destructuring lets us to unpack vauesfrom an array or extract propertiesfrom objects 
+ -> object Destructuring : 
+        instead of doing this : 
+        const user = {
+            name: "Sai",
+            age: 25,
+            location: "Hyderabad"
+        };
+
+        const name = user.name;
+        const age = user.age;
+
+        we can do 
+        const {name, age, location} = user
+        console.log(name)
+        console.log(age)
+
+        we can also rename : 
+        const {name: Username} = user 
+        console.log(Username)   
+
+
+ -> Array Destructuring
+        const nums = [10, 20, 30];
+        const a = nums[0];
+        const b = nums[1];
+
+        we can do this 
+        const [a, b, c] = nums;
+        console.log(a); // 10
+        console.log(b); // 20
+
+
+------------------ Spread and Rest operator 
+ -> Spread operator is used to expand elements (mainly arrays/objects)
+// Spread operator  for copying arrays
+        const arr1 = [1, 2, 3]
+        const arr2 = [...arr1]
+        console.log(arr2)
+        //merging arrays 
+        const nums1 = [1, 2]
+        const nums2 = [3, 4]
+        const all = [...nums1, ...nums2]
+        console.log(all)
+
+        //using with objects 
+        const user = {
+            name: "Sai",
+            age: 25
+        }
+        const updatedUser = { ...user, location: "Hyderabad" }
+        console.log(updatedUser)
+
+        //With function arguments 
+        const numbers = [1, 2, 3];
+        console.log(Math.max(...numbers)); 
+
+ -> Rest operator is used to collect remaining values in an array or object
+
+
+--------------------- Default parameters, short syntax for object properties and methods and Template literals 
+-> Default parameters are used to provide default values to function parameters
+function  greet(name = "Guest") {
+    console.log("Hello, " + name)
+}
+greet();
+greet("Sai")
+
+-> short syntax for object properties and methods 
+    If variable names match property names, you can write shorter code:
+        let name1 = "Sai";
+        let age1 = 25;
+
+        let person = { name1, age1}
+        console.log(name1)
+
+-> Template literals : Cleaner and easier way to concatenate strings and inject variables.
+    let username = "Sai"
+    let role = "Developer" 
+    console.log(`Hello, ${username}, you are a ${role}`)
