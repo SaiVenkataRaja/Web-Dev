@@ -21,6 +21,12 @@
     <input id="field" placeholder="Enter your Name ">
     <button id="subbut">Submit</button>
     <p id="ptag"></p>
+    <p id="count">0</p>
+    <button id="increment">+1</button>
+
+    <input id="itemInput" placeholder="Enter an item">
+    <button id="addItem">Add Item</button>
+    <p id="itemList"></p>
     <script>
         //alert("Hello")
         // Variables 
@@ -547,22 +553,22 @@
         //const z =7 
         console.log(z)
 
-        //Error Handling
+        // //Error Handling
 
-        function divide(a, b) {
-            try {
-                if (b == 0) {
-                    throw new Error("Division by zero is not allowed ")
-                }
-                return a / b
-            } catch (error) {
-                console.error(error.message)
-            } finally {
-                console.log("This will run")
-            }
-        }
-        console.log(divide(4, 2))
-        console.log(divide(4, 0))
+        // function divide(a, b) {
+        //     try {
+        //         if (b == 0) {
+        //             throw new Error("Division by zero is not allowed ")
+        //         }
+        //         return a / b
+        //     } catch (error) {
+        //         console.error(error.message)
+        //     } finally {
+        //         console.log("This will run")
+        //     }
+        // }
+        // console.log(divide(4, 2))
+        // console.log(divide(4, 0))
 
         // challenge 
         function sumArray(arr) {
@@ -574,34 +580,181 @@
         }
         console.log(sumArray([1, 2, 3]))
 
-        //setTimeout
-        console.log("Start");
-        setTimeout(() => {
-            console.log("This is delayed");
-        }, 10000);
-        console.log("End");
+        // //setTimeout
+        // console.log("Start");
+        // setTimeout(() => {
+        //     console.log("This is delayed");
+        // }, 10000);
+        // console.log("End");
 
 
-        // SetInterval
-        
+        // // SetInterval
+        // let count = 0
+        // const timer = setInterval(() => {
+        //     console.log("Repeating :", ++count)
+        //     if (count === 3) clearInterval(timer);
+        // }, 2000)
+
+        // setTimeout(() => {
+        //     console.log("Hello after 2 seconds !")
+        // }, 2000)
+
+        // let coun = 6
+        // const time = setInterval(() => {
+        //     console.log("Countdown:", --coun)
+        //     if (coun === 1)  {
+        //         clearInterval(time)
+        //         console.log("Done")
+        //     }
+        // }, 1000)
+
+        // callbacks
+        function processUser(name, callback) {
+            console.log(`Processing User: ${name}`);
+            callback(name); // Pass the name to the callback
+        }
+
+        function callback(userName) {
+            console.log(`Welcome ${userName}`);
+        }
+
+        processUser("Sai", callback);
+
+        //challenges upto date 14/5
+        // challenge 1: FizzBuzz Variant
+        // Write a function that loops from 1 to 100 and:
+        // Prints "Fizz" if divisible by 3,
+        // "Buzz" if divisible by 5,
+        // "FizzBuzz" if divisible by both,
+        // The number itself otherwise.
+        // Use if, else if, and logical operators.
+
+        // function FizzBuzz() {
+        //     for (let i = 1; i <= 100; i++) {
+        //         if (i % 3 == 0 & i % 5 == 0) {
+        //             console.log(`FizzBuzz: ${i}`)
+        //         } else if (i % 3 == 0) {
+        //             console.log(`Fizz: ${i}`)
+        //         } else if (i % 5 == 0) {
+        //             console.log(`Buzz: ${i}`)
+        //         } else {
+        //             console.log(i)
+        //         }
+        //     }
+        // }
+        // FizzBuzz()
+
+        // // 2. Challenge 2: Calculate Area
+        // // Create an arrow function calculateArea that:
+        // // Takes two parameters: width and height,
+        // // Returns the area of a rectangle (width × height),
+        // // If any of the arguments are non-positive, return "Invalid dimensions".
+
+        // const area = (width, height) => {
+        //     if (width < 0 || height < 0) {
+        //         return "Invalid Dimensions"
+        //     }
+        //     return width * height
+
+        // }
+        // console.log(area(10, 2))
+
+        // //3 .Arrays and array methods 
+        // // Write an arrow function that:
+        // // Filters numbers > 10,
+        // // Doubles them,
+        // // Returns the new array.
+        // // Use filter and map.
+
+        // // const numbers1 = [1, 5, 12, 18, 7, 30, 3];
+        // // const fil = numbers1.filter(n => n>10)
+        // // console.log(fil)
+        // // const sq = numbers1.map(n => n*n) 
+        // // console.log(sq)
+
+        // //4.  Object Formatter 
+        // //Write a function formatUser that takes a user object:   
+        // //and returns:
+        // //"Jane Doe is 30 years old."
+
+        // // const user2 = {
+        // //     firstName: "Jane",
+        // //     lastName: "Doe",
+        // //     age: 30
+        // //  }
+        // // function formattUser(user) {
+        // //     const {firstName, lastName, age } = user
+        // //     console.log(`${firstName} ${lastName} is ${age} years old`)
+        // // }
+        // // console.log(formattUser(user2))
 
 
+        // // cha. 5 : Classes and inheritance 
+        // class Person2 {
+        //     constructor(name, age) {
+        //         this.name = name
+        //         this.age = age
+        //     }
+        //     greet() {
+        //         console.log(`Hello, mu name is ${this.name}`)
+        //     }
+        // }
 
+        // class student2 extends Person2 {
+        //     constructor(name, age, grade) {
+        //         super(name, age)
+        //         this.grade = grade
+        //     }
+        //     greet() {
+        //         console.log(`Hi, I am ${this.name} and I'm in grade ${this.grade}`)
+        //     }
+        // }
 
+        // s4 = new student2("Sai", 24, "X")
+        // s4.greet()
 
+        // //6. DOM manipulation
+        // // Create a simple HTML page with:
+        // // A <p id="count">0</p>
+        // // A <button id="increment">+1</button>
+        // // Write JavaScript to:
+        // // Increment the number shown in the paragraph each time the button is clicked.
 
+        // //p id = count , but id = increment
+        // let count = 0
+        // const but = document.getElementById("increment")
+        // but.onclick = () => {
+        //     count += 1
+        //     document.getElementById("count").textContent = count
+        // }
 
+        //Promise : 
 
+        const pro = new Promise((resolve, reject) => {
+            let success = true
 
+            if (success) {
+                resolve("Task completed successfully")
+            } else {
+                reject("Task failed")
+            }
+        })
+        pro.then(result => console.log(result))
+        pro.catch(error => console.log(error))
 
+        const prom = new Promise((resolve, reject) => {
+            let status = false
 
-
-
-
-
-
-
-        
+            if (status) {
+                setTimeout(() => {
+                    resolve("Data fetched")
+                }, 2000)
+            } else {
+                reject("Data has not been fetched")
+            }
+        })
+        prom.then(result => console.log(result))
+        prom.catch(error => console.log(error))
     </script>
 
 </body>

@@ -428,3 +428,44 @@ a crucial part of JS that deals with non-blocking operations like fetching data 
         if (count === 3) clearInterval(timer);
     }, 1000);
 
+------------ Callback 
+A callback is a function passed as an argument to another function.
+its involved later , often some operation completes (likewaiting for a timeout or receiving response)
+        function greet(name, callback) {
+        console.log("Hi", name);
+        callback();
+        }
+        function sayBye() {
+        console.log("Bye!");
+        }
+        greet("Raja", sayBye); // Output: Hi Raja \n Bye!
+
+
+-------------- Promises 
+A Promise is an object representing the eventual completion (or failure) of an asynchronous operation.
+const promise = new Promise((resolve, reject) => {
+  // async operation
+});
+resolve(value) : called when the operation is successful
+reject(error) : called when the operation fails 
+
+--- async / await : has been introduced to reduce then and catch block syntax 
+
+async function fetchData() {
+    let status = false
+
+    try {
+        const result = await new Promise((resolve, reject) => {
+            if (status) {
+                setTimeout(() => resolve("Data fetched"), 2000)
+            } else {
+                reject("Data has not been fetched")
+            }
+        })
+        console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+fetchData()
