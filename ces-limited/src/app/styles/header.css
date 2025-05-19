@@ -1,0 +1,28 @@
+#header {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+   
+}
+#navs {
+  
+   
+   padding-top: 20px;
+   margin-left: 60px;
+}
+li{
+    color: gray;
+    cursor: pointer;
+}
+li:hover {
+    color: black;
+}
+#navs {
+    justify-items: center;
+}
+
+#inputField {
+    margin-top: 10px;
+    margin-left: 350px;
+    
+    
+}
