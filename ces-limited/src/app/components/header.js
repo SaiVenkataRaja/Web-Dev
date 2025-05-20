@@ -15,7 +15,7 @@ export default function Header() {
                     <li className="relative">
                         <a onClick={handleCapClick} className="cursor-pointer">CAPABILITIES</a>
 
-                        {/* Dropdown menu */}
+                
                         {capDropdown && (
                             <ul className="absolute top-full left-0 mt-2 w-48 bg-white shadow-md rounded-md z-50">
                                 <li className="px-4 py-2">1</li>

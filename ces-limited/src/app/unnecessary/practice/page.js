@@ -1,5 +1,7 @@
 'use client'
-import { use, useState } from "react";
+import { setConfig } from "next/config";
+import { exportTraceState } from "next/dist/trace";
+import { use, useEffect, useState } from "react";
 // function Comp1() {
 //     return <p>Vachindayya Developer-u</p>
 // }
@@ -190,10 +192,44 @@ import { use, useState } from "react";
 //     )
 // }
 
-export default function Practice() {
-    return(
-        <div>
-            Prac
-        </div>
-    )
-}
+// export default function Practice() {
+//     const [count, setCount] = useState(0)
+//     useEffect(() => {
+//         document.title = `Count: ${count}`
+//         console.log("Effect ran - count changed to", count)
+//     }, [count])
+//     return(
+//         <div className="m-5 space-x-5 ">
+//             <h2>Count : {count}</h2>
+//             <button className="border-2 p-2 cursor-pointer" onClick={() => setCount(count + 1 )}>Increment</button>
+//             <button className="border-2 p-2 cursor-pointer" onClick={() => setCount(count - 1)}>Decrement</button>
+//         </div>
+//     )
+// }
+
+// useState input field and toggle light  example 
+// export default function Practice() {
+//     const [name, setName] = useState("")
+//     const [on, setOn] = useState(false)
+//     return(
+//         <div>
+//             <input value={name} placeholder="Enter Name" className="border-2" onChange={(e) => setName(e.target.value)}/> 
+//             <p>Hello, {name}</p>
+
+//             <button className="m-7" onClick={() => setOn(!on)}>Toggle Light</button>
+//             <p>The Light is {on ? "ON" : "OFF"}</p>
+//         </div>
+//     )
+// }
+
+
+// export default function Practice() {
+//     const [hide , setHide] = useState(false)
+//     return(
+//         <div>
+//             {hide && <p>This is the task</p> }
+//             <button onClick={() => setHide(!hide)}>{hide ? "Hide message" : "Show message"}</button>
+//         </div>
+//     )
+// }
+
