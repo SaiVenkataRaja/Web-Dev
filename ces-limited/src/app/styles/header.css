@@ -23,6 +23,27 @@ li:hover {
 #inputField {
     margin-top: 10px;
     margin-left: 350px;
-    
-    
+}
+
+#widthcons {
+    width: 1000px;
+}
+#headline {
+    font-size: large;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 2;
+}
+
+#navslist {
+    font-size: small;
+    margin-bottom: 10px;
+}
+#navItem {
+    border-bottom: 2px solid gray;
+    transition: border-color 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+#navItem:hover {
+    border-bottom: 2px solid black;
 }

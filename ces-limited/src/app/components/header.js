@@ -61,10 +61,41 @@ export default function Header() {
                         <li className="relative">
                             <p onMouseDown={(e) => handleDropdownClick(0, e)} className="cursor-pointer">CAPABILITIES</p>
                             {openDropdown === 0 && (
-                                <ul ref={capDropdownRef} className="absolute top-full left-0 mt-9 w-48 bg-white shadow-md rounded-md z-50">
-                                    <li className="px-4 py-2">1</li>
-                                    <li className="px-4 py-2">2</li>
-                                    <li className="px-4 py-2">3</li>
+                                <ul id="widthcons" ref={capDropdownRef} className="flex absolute top-full left-0 mt-9  bg-white shadow-md rounded-md z-50">
+                                    <li id="headline" className="px-4 py-2">Business Services
+                                        <ul id="navslist">
+                                            <li id="navItem">FUND ACCOUNTING</li>
+                                            <li>FUND ACCOUNTING</li>
+                                            <li>FUND ACCOUNTING</li>
+                                            <li>FUND ACCOUNTING</li>
+                                            <li>FUND ACCOUNTING</li>
+                                            <li>FUND ACCOUNTING</li>
+                                        </ul>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2">Digital Transformation
+                                        <li>2.1</li>
+                                        <li>2.2</li>
+                                        <li>2.3</li>
+                                        <li>2.4</li>
+                                        <li>2.5</li>
+                                        <li>2.6</li>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2">Managed IT and Operations
+                                        <li>3.1</li>
+                                        <li>3.2</li>
+                                        <li>3.3</li>
+                                        <li>3.4</li>
+                                        <li>3.5</li>
+                                        <li>3.6</li>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2">Enterprise Applications
+                                        <li>4.1</li>
+                                        <li>4.2</li>
+                                        <li>4.3</li>
+                                        <li>4.4</li>
+                                        <li>4.5</li>
+                                        <li>4.6</li>
+                                    </li>
                                 </ul>
                                 // The operation that needs to be done : 
                                 // when i click on other navs , the existing opened navbar should be closed 
@@ -87,6 +118,7 @@ export default function Header() {
                                     <li className="px-4 py-2">Industry 1</li>
                                     <li className="px-4 py-2">Industry 2</li>
                                     <li className="px-4 py-2">Industry 3</li>
+
                                 </ul>
                             )}
                         </li>
