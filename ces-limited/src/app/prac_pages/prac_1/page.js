@@ -133,7 +133,7 @@ import { useRef } from "react";
 export default function Practice() {
     const [count, setCount] = useState(0)
     const prevCountRef = useRef()
-    useEffect(() => {
+    useEffect (() => {
         prevCountRef.current = count
     })
     return ( 

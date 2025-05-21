@@ -16,15 +16,25 @@ export default function Header() {
 
     //ai helped to write this block
     // Handle dropdown toggle logic (use mousedown event) 
+    // function handleDropdownClick(index, e) {
+    //     // Prevent the toggle logic when the dropdown is already open
+    //     if (openDropdown === index) {
+    //         // Let go of the click and close the dropdown immediately
+    //         e.stopPropagation();
+    //         setOpenDropdown(null); // Close the currently open dropdown
+    //     } else {
+    //         // Open the new dropdown and close the previous one
+    //         setOpenDropdown(index);
+    //     }
+    // }
+
     function handleDropdownClick(index, e) {
-        // Prevent the toggle logic when the dropdown is already open
+        e.stopPropagation();  // Prevent event propagation when clicking on a dropdown item
+
         if (openDropdown === index) {
-            // Let go of the click and close the dropdown immediately
-            e.stopPropagation();
             setOpenDropdown(null); // Close the currently open dropdown
         } else {
-            // Open the new dropdown and close the previous one
-            setOpenDropdown(index);
+            setOpenDropdown(index); // Open the new dropdown
         }
     }
 
@@ -59,42 +69,48 @@ export default function Header() {
                 <div id="navs" className="flex space-x-10 list-none">
                     <ul className="flex space-x-10 list-none relative">
                         <li className="relative">
-                            <p onMouseDown={(e) => handleDropdownClick(0, e)} className="cursor-pointer">CAPABILITIES</p>
+                            <p onMouseDown={(e) => handleDropdownClick(0, e)} className="cursor-pointer">CAPABILITIES </p>
                             {openDropdown === 0 && (
-                                <ul id="widthcons" ref={capDropdownRef} className="flex absolute top-full left-0 mt-9  bg-white shadow-md rounded-md z-50">
-                                    <li id="headline" className="px-4 py-2">Business Services
+                                <ul id="widthcons" ref={capDropdownRef} className="flex absolute top-full left-0 mt-9  bg-white shadow-md rounded-md z-50 space-x-6">
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">Business Services</h2>
                                         <ul id="navslist">
-                                            <li id="navItem">FUND ACCOUNTING</li>
-                                            <li>FUND ACCOUNTING</li>
-                                            <li>FUND ACCOUNTING</li>
-                                            <li>FUND ACCOUNTING</li>
-                                            <li>FUND ACCOUNTING</li>
-                                            <li>FUND ACCOUNTING</li>
+                                            <li id="navItem">Fund Accounting</li>
+                                            <li id="navItem">Finance & Accounting</li>
+                                            <li id="navItem">HR & Payroll</li>
+                                            <li id="navItem">Tax & Treasury</li>
+                                            <li id="navItem">Procurement</li>
+                                            <li id="navItem">Fraud Prevention</li>
                                         </ul>
                                     </li>
-                                    <li id="headline" className="px-4 py-2">Digital Transformation
-                                        <li>2.1</li>
-                                        <li>2.2</li>
-                                        <li>2.3</li>
-                                        <li>2.4</li>
-                                        <li>2.5</li>
-                                        <li>2.6</li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">Digital Transformation</h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">AI & ML</li>
+                                            <li id="navItem">Cloud Migration & Integration</li>
+                                            <li id="navItem">Data Engineering & Analytics</li>
+                                            <li id="navItem">Industries 5.O</li>
+                                            <li id="navItem">Product Engineering</li>
+                                            <li id="navItem">Testing & Automation</li>
+                                        </ul>
                                     </li>
-                                    <li id="headline" className="px-4 py-2">Managed IT and Operations
-                                        <li>3.1</li>
-                                        <li>3.2</li>
-                                        <li>3.3</li>
-                                        <li>3.4</li>
-                                        <li>3.5</li>
-                                        <li>3.6</li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">Managed IT and Operations</h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">Application Maintenance Services</li>
+                                            <li id="navItem">Cloud Support</li>
+                                            <li id="navItem">Cybersecurity</li>
+                                            <li id="navItem">IT Infrastructure Services</li>
+                                            <li id="navItem">Network Support</li>
+                                            <li id="navItem">24X7 Helpdesk</li>
+                                        </ul>
                                     </li>
-                                    <li id="headline" className="px-4 py-2">Enterprise Applications
-                                        <li>4.1</li>
-                                        <li>4.2</li>
-                                        <li>4.3</li>
-                                        <li>4.4</li>
-                                        <li>4.5</li>
-                                        <li>4.6</li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">Enterprise Applications</h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">Oracle</li>
+                                            <li id="navItem">SAP</li>
+                                            <li id="navItem">Workday</li>
+                                            <li id="navItem">Salesforce</li>
+                                            <li id="navItem">ZOHO</li>
+                                            <li id="navItem">Netsuite</li>
+                                        </ul>
                                     </li>
                                 </ul>
                                 // The operation that needs to be done : 
@@ -114,21 +130,55 @@ export default function Header() {
                                 INDUSTRIES
                             </a>
                             {openDropdown === 1 && (
-                                <ul ref={indDropdownRef} className="absolute top-full left-0 mt-9 w-48 bg-white shadow-md rounded-md z-50">
-                                    <li className="px-4 py-2">Industry 1</li>
-                                    <li className="px-4 py-2">Industry 2</li>
-                                    <li className="px-4 py-2">Industry 3</li>
-
+                                <ul id="indCon" ref={capDropdownRef} className=" flex absolute top-full left-0 mt-9  bg-white shadow-md rounded-md z-50 space-x-6">
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3"></h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">Asset Management</li>
+                                            <li id="navItem">Agriculture</li>
+                                            <li id="navItem">Healthcare</li>
+                                        </ul>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3"></h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">Retail</li>
+                                            <li id="navItem">ISVS & Enterprise</li>
+                                            <li id="navItem">Real Estate</li>
+                                        </ul>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3"></h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">Manufacturing</li>
+                                            <li id="navItem">Utilities</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             )}
                         </li>
                         <li className="relative">
                             <p onMouseDown={(e) => handleDropdownClick(2, e)} className="cursor-pointer">INSIGHTS</p>
                             {openDropdown === 2 && (
-                                <ul ref={insightDropdownRef} className="absolute top-full left-0 mt-9 w-48 bg-white shadow-md rounded-md z-50">
-                                    <li className="px-4 py-2">Insight 1</li>
-                                    <li className="px-4 py-2">Insight 2</li>
-                                    <li className="px-4 py-2">Insight 3</li>
+                                <ul id="insightCon" ref={capDropdownRef} className=" flex absolute top-full left-0 mt-9  bg-white shadow-md rounded-md z-50 space-x-6">
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">BLOGS</h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">AI & Computer Vision for...</li>
+                                            <li id="navItem">Accelerate Your S/4HANA Journey with...</li>
+                                            <li id="navItem">CES Data Migration Suite: A...</li>
+                                        </ul>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">CASE STUDIES</h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">Smart Factory Transformation for a...</li>
+                                            <li id="navItem">Patch Management & Zero-Day Security...</li>
+                                            <li id="navItem">Oracle Fusion Cloud Test Automation...</li>
+                                        </ul>
+                                    </li>
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3">NEWSROOMS</h2>
+                                        <ul id="navslist">
+                                            <li id="navItem">CES Limited Unveils Its New...</li>
+                                            <li id="navItem">CES Limited Honored with Three...</li>
+                                            <li id="navItem">CES Recognized as a Niche...</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             )}
                         </li>
@@ -136,10 +186,15 @@ export default function Header() {
                         <li className="relative">
                             <p onMouseDown={(e) => handleDropdownClick(3, e)} className="cursor-pointer">ABOUT</p>
                             {openDropdown === 3 && (
-                                <ul ref={aboutDropdownRef} className="absolute top-full left-0 mt-9 w-48 bg-white shadow-md rounded-md z-50">
-                                    <li className="px-4 py-2">About 1</li>
-                                    <li className="px-4 py-2">About 2</li>
-                                    <li className="px-4 py-2">About 3</li>
+                                <ul id="aboutCon" ref={capDropdownRef} className=" flex absolute top-full left-0 mt-9  bg-white shadow-md rounded-md z-50 space-x-6">
+                                    <li id="headline" className="px-4 py-2 "><h2 className="pb-3"></h2>
+                                        <ul id="navslist">
+                                            <li id="navItem" className="px-4 py-2">Leadership</li>
+                                            <li id="navItem" className="px-4 py-2">Culture</li>
+                                            <li id="navItem" className="px-4 py-2">Employees</li>
+                                            <li id="navItem" className="px-4 py-2">Investor</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             )}
                         </li>

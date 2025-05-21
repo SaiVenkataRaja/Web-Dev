@@ -40,10 +40,25 @@ li:hover {
     margin-bottom: 10px;
 }
 #navItem {
-    border-bottom: 2px solid gray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 7px;
     transition: border-color 0.3s ease-in-out;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 #navItem:hover {
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+#indCon {
+    width: 550px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#insightCon {
+    width: 1000px;
+}
+#aboutCon {
+    width: 175px;
 }
