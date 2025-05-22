@@ -1,64 +1,57 @@
-#header {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-   
-}
-#navs {
-  
-   
-   padding-top: 20px;
-   margin-left: 60px;
-}
-li{
+#navHead {
     color: gray;
+    font-size: 14px;
+    position: relative; /* Set position for dropdown positioning */
+    transition: color 0.3s ease;
+}
+
+#navHead:hover {
+    color: black;
+}
+
+/* Style for dropdown */
+.dropdown-menu {
+    display: none; /* Hide the dropdown by default */
+    position: absolute;
+    top: 100%; /* Position below the parent item */
+    left: 0;
+    background-color: white;
+    
+    border-radius: 8px;
+    padding: 10px 0;
+    
+    padding-top: 50px;
+    
+}
+
+#navHead:hover .dropdown-menu {
+    display: flex; /* Show the dropdown when hovering over the parent item */
+}
+
+.dropdown-menu li {
+    padding: 8px 20px;
     cursor: pointer;
 }
-li:hover {
-    color: black;
-}
-#navs {
-    justify-items: center;
-}
 
-#inputField {
-    margin-top: 10px;
-    margin-left: 350px;
-}
 
-#widthcons {
+#capdrop {
     width: 1000px;
-}
-#headline {
-    font-size: large;
-    color: black;
-    font-weight: 600;
-    margin-bottom: 2;
 }
 
 #navslist {
-    font-size: small;
-    margin-bottom: 10px;
+   
 }
 #navItem {
     border-bottom: 1px solid gray;
-    padding-bottom: 7px;
-    transition: border-color 0.3s ease-in-out;
-    margin-bottom: 10px;
-    font-size: 14px;
+    color: gray;
+    transition: 0.5s ease;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 #navItem:hover {
+    color: black;
     border-bottom: 1px solid black;
 }
-
-#indCon {
-    width: 550px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#insightCon {
-    width: 1000px;
-}
-#aboutCon {
-    width: 175px;
+#dropHead {
+    padding-bottom: 15px;
 }
