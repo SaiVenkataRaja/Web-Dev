@@ -12,9 +12,9 @@ export default function Home() {
         <h2 className="text-5xl">SMART@CES Powers Businesses to Win</h2>
         <p className="my-4 text-2xl text-gray-500">Behind every success is a SMART strategy no one saw coming. Ready to write yours with CES? <span className="text-orange-600 cursor-pointer hover:border-b-2">Contact Us!</span></p>
         <div id="homeContainer">
-          <div id="imgContainer">
-            <img id="image" src="../images/homepageImages/support.webp" />
-            <h2 id="headLetter">S</h2>
+          <div id="imgContainer" className="relative overflow-hidden group rounded-2xl">
+            <img id="image" src="../images/homepageImages/support.webp" className="transition-transform duration-500 ease-in-out group-hover:scale-110 w-full rounded-2xl"/>
+            <h2 id="headLetter" className="">S</h2>
             <div className="rounded-2xl" id="textContainer">
               <h3 className="mb-5 bg-gray-200 rounded-full">SUPPORT</h3>
               <p className="my-5">RELIABLE OPERATIONS AND CONTINUOUS IMPROVEMENT </p>
