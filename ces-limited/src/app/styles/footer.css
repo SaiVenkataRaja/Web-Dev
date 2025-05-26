@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+    margin-top: 50px;
+}
+#footerBut {
+    font-weight: bold;
+    color: orange;
+    border: 2px solid orange;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#footerBut:hover {
+    background: linear-gradient(45deg, orange, yellow);
+    color: black;
+}
+
+#footerTitles {
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+}
+#footerPoints {
+    font-size: 10px;
+    margin-top: 10px;
+    color: gray;
+}
+
+#footerInPoints {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#footerInPoints:hover {
+    color: black;
+}
+#icon{
+    width: 30px;
+    height: 30px;
+    
+}

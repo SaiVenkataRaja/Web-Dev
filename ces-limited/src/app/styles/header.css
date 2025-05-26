@@ -3,6 +3,7 @@
     font-size: 14px;
     position: relative; /* Set position for dropdown positioning */
     transition: color 0.3s ease;
+
 }
 
 #navHead:hover {
@@ -16,14 +17,11 @@
     top: 100%; /* Position below the parent item */
     left: 0;
     background-color: white;
-    
     border-radius: 8px;
     padding: 10px 0;
-    
     padding-top: 50px;
-    
+    z-index: 50;
 }
-
 #navHead:hover .dropdown-menu {
     display: flex; /* Show the dropdown when hovering over the parent item */
 }
@@ -35,7 +33,7 @@
 
 
 #capdrop {
-    width: 1000px;
+    width: 900px;
 }
 
 #navslist {
@@ -45,8 +43,8 @@
     border-bottom: 1px solid gray;
     color: gray;
     transition: 0.5s ease;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-bottom: 7px;
+    padding-top: 7px;
 }
 #navItem:hover {
     color: black;
@@ -54,4 +52,14 @@
 }
 #dropHead {
     padding-bottom: 15px;
+    font: bold;
+    
 }
+
+#indusDrop {
+    width: 450px;
+}
+#aboutDrop {
+    width: 120px;
+}
+

@@ -130,17 +130,60 @@ import { useRef } from "react";
 // }
 
 
-export default function Practice() {
-    const [count, setCount] = useState(0)
-    const prevCountRef = useRef()
-    useEffect (() => {
-        prevCountRef.current = count
-    })
-    return ( 
-        <div>
-            <p>Current : {count}</p>
-            <p>Previous : {prevCountRef.current}</p>
-            <button onClick={() => setCount(count + 1)}>Increase</button>
-        </div>
-    )
-}
+// export default function Practice() {
+//     const [count, setCount] = useState(0)
+//     const prevCountRef = useRef()
+//     useEffect (() => {
+//         prevCountRef.current = count
+//     })
+//     return ( 
+//         <div>
+//             <p>Current : {count}</p>
+//             <p>Previous : {prevCountRef.current}</p>
+//             <button onClick={() => setCount(count + 1)}>Increase</button>
+//         </div>
+//     )
+// }
+
+
+// export default function Practice() {
+//     const [show, setShow] = useState(true)
+//     return (
+//         <div>
+//             <button onClick={() => setShow(!show)}>{show ? "Hide" : "Show"}Text</button>
+//             {show && <p>This is the gext</p>}
+//         </div>
+        
+//     )
+// }
+
+// export default function Practice() {
+//     const [user, setUser] = useState(null)
+
+//     useEffect(() => {
+//         fetch("https://randomuser.me/api/")
+//         .then(res => res.json())
+//         .then(data => setUser(data.results[0]
+//         ))
+//     }, [])
+//     return(
+//         <div>
+//             {user ? <p>Name: {user.name.first}</p>: <p>Loading........</p>}
+//         </div>
+//     )
+// }
+
+// export default function Practice() {
+//     const inputRef  = useRef(null)
+//     function handleFocus() {
+//         inputRef.current.focus()
+//     }
+//     return (
+//         <div>
+//             <input ref={inputRef} type="text" placeholder="TYpe SOmething"/>
+//             <button onClick={handleFocus}>Focus Input</button>
+//         </div>
+//     )
+// }
+
+
