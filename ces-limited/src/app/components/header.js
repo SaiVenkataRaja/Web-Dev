@@ -1,6 +1,8 @@
 'use client'
 import Link from "next/link"
 import "../styles/header.css"
+import { useContext } from "react"
+import { ThemeContext } from "./ThemeContext"
 
 export default function Header() {
 
@@ -107,7 +109,9 @@ export default function Header() {
 
     // Note : Replace id's for each one to make the above stuff to work , but has one issue : handleCLick outside function 
 
+    // const theme = useContext(ThemeContext)
 
+    // const headerStyle = theme === "light" ? "bg-gray-200 text-black" : 'bg-gray-800 '
     return (
         <div className="flex px-14 py-10">
             <Link href="/">
@@ -243,6 +247,9 @@ export default function Header() {
             <div id="inputField">
                 <input className="border-2 border-gray-200 px-2 py-2 rounded-4xl ml-60" placeholder='TRY "CYBERSECURITY"' />
             </div>
+            {/* <div>
+                <p>Current Theme : <strong>{theme}</strong></p>
+            </div> */}
         </div>
     )
 }

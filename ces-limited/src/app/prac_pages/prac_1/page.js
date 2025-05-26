@@ -1,7 +1,9 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRef } from "react";
+import { ThemeContext } from "@/app/components/ThemeContext";
+import Header from "@/app/components/header";
 // export default function Practice() {
 //     const [name, setName] = useState("");
 //     const [people, setPeople] = useState([]);
@@ -117,7 +119,7 @@ import { useRef } from "react";
 
 // export default function Practice() {
 //     const inputRef = useRef(null) // creates a reference
-    
+
 //     function handleFocus() {
 //         inputRef.current.focus()
 //     }
@@ -153,7 +155,7 @@ import { useRef } from "react";
 //             <button onClick={() => setShow(!show)}>{show ? "Hide" : "Show"}Text</button>
 //             {show && <p>This is the gext</p>}
 //         </div>
-        
+
 //     )
 // }
 
@@ -182,6 +184,80 @@ import { useRef } from "react";
 //         <div>
 //             <input ref={inputRef} type="text" placeholder="TYpe SOmething"/>
 //             <button onClick={handleFocus}>Focus Input</button>
+//         </div>
+//     )
+// }
+
+
+// export default function App() {
+//     const myContext = React.createContext();
+//     <myContext.Provider value={"Sai"}><App /></myContext.Provider>
+//     const name = useContext(myContext)
+//     console.log(name)
+//     return(
+//         <div>
+
+//         </div>
+//     )
+// }
+
+
+// export default function Practice() {
+//     // create context
+//     const ThemeContext = React.createContext()
+
+//     function ThemeProvider({ children }) {
+//         const [theme, setTheme] = useState("light")
+//         function toggleTheme() {
+//             setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+//         }
+//         return (
+//             <ThemeContext.Provider value={{ theme, toggleTheme }}>
+//                 {children}
+//             </ThemeContext.Provider>
+//         )
+//     }
+
+//     function Header1() {
+//   const { theme } = useContext(ThemeContext);
+//   return <h1 className="text-xl mb-2">Current Theme: {theme}</h1>;
+// }
+
+//     function ToggleButton() {
+//         const { toggleTheme } = useContext(ThemeContext)
+//         return (
+//             <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+//                 onClick={toggleTheme}>Toggle Theme</button>
+//         )
+//     }
+//     return (
+//         <div>
+//             <ThemeProvider>
+//                 <div>
+//                     <Header1 />
+//                     <ToggleButton />
+//                 </div>
+//             </ThemeProvider>
+//         </div>
+//     )
+// }
+
+
+
+// export default function Practice() {
+//    const [theme, setTheme] = useState('light')
+
+//    const toggleTheme = () => {
+//     setTheme(prev => (prev === 'light' ? "dark" : "light"))
+//    }
+//     return(
+//          <div>
+//             <Header />
+//             <ThemeContext.Provider value={theme}>
+//                 <div className={`min-h-screen p-5 ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
+//                     <button onClick={toggleTheme}>Toggle Theme</button>
+//                 </div>
+//             </ThemeContext.Provider>
 //         </div>
 //     )
 // }
