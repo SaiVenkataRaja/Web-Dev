@@ -21,6 +21,12 @@
     text-align: center;
     
 }
+#homeContainer img {
+    transition: transform 0.3s ease;
+}
+#Container img:hover {
+    transform: scale(1.1);
+}
 
 #headLetter {
     position: absolute;

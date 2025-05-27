@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import { useRef } from "react";
 import { ThemeContext } from "@/app/components/ThemeContext";
 import Header from "@/app/components/header";
+import { init } from "next/dist/compiled/webpack/webpack";
 // export default function Practice() {
 //     const [name, setName] = useState("");
 //     const [people, setPeople] = useState([]);
@@ -262,4 +263,36 @@ import Header from "@/app/components/header";
 //     )
 // }
 
+// const initialState = {count: 0}
+// function reducer(state, action) {
+//     switch(action.type) {
+//         case 'increment':
+//             return {count: state.count +1}
+//         case 'decrement':
+//             return {count: state.count -1}
+//         case 'reset':
+//             return initialState
+//         default:
+//             return state
+//         }
+// }
+// export default function Practice() {
+//     const [state, dispatch] = useReducer(reducer, initialState)
+//     return(
+//         <div>
+            
+//             <button onClick={()=> dispatch({type:'decrement'})}>-</button>
+//             <h2>Count : {state.count}</h2>
+//             <button onClick={() => dispatch({type: 'increment'})}>+</button>
+//             <button onClick={() => dispatch({type:'reset'})}>Reset</button>
+//         </div>
+//     )
+// }
 
+export default function Practice() {
+    return(
+        <div>
+            asdf
+        </div>
+    )
+}

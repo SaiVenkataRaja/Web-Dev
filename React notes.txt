@@ -240,8 +240,219 @@ Setting up :
             }
 
 
-5. useReducer : is similar to useState, it allows for custom state logics
+5. useReducer : is similar to useState, it allows for custom state logics, it is used for managing more complex state logic and especially when 
+                                                                                the next stated depends on previous oone
+                                                                                multiple related state updates 
+                                                                                want to group state logic in one place
         usereducer hook accepts two arguments useReducer(<reducer, <initialState>)
             the reducer function conditions the custom state logic (this decides how to update the state) and the initialState canbe a simple value but generally will contain an object.
             const [state, dispatch] = useReducer(reducer, initialState)
                 dispatch(action) - triggers the state update
+
+
+6. useCallback : is a react hook that returns memoised callback function, it only recreates the functions when one of its dependencies gets changed.
+                This is useful for passing stable callbacks to optimized child componnents that rely on reference equality to prevent unnecessary renders 
+
+        Parent : counterWithCallback.jsx
+            'use client'
+            import { useState, useCallback } from "react";
+            import ChildButton from "./ChildButton";
+
+            export default function CounterWithCallback() {
+                const [count, setCount] = useState(0);
+                const [other, setOther] = useState(false);
+
+                const increment = useCallback(() => {
+                    setCount(prev => prev + 1);
+                }, []);
+
+                return (
+                    <div className="m-5 space-y-3">
+                        <p>Count: {count}</p>
+                        <ChildButton onClick={increment} />
+
+                        <button
+                            onClick={() => setOther(!other)}
+                            className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+                        >
+                            Toggle Something Unrelated
+                        </button>
+                    </div>
+                );
+            }
+
+        Child : ChildButton.jsx
+            'use client'
+            import React from 'react';
+
+            function ChildButton({ onClick }) {
+                console.log("ChildButton rendered");
+                return (
+                    <button
+                        onClick={onClick}
+                        className="bg-blue-400 text-white px-4 py-1 rounded hover:bg-blue-500"
+                    >
+                        Increment Count
+                    </button>
+                );
+            }
+
+            export default React.memo(ChildButton); // Only re-renders if props change
+
+
+7. useMemo : is a hook that memoize a computed value, it only recomputes the value when one of its dependencies gets changed
+            this optimization helps to avoid excessive calculations on evry render.
+
+            The useMemo and useCallback hooks are similar. the main diff is that useMemo returns a memoized values and 
+                useCallback returns a memoized function.
+
+            syntax : const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+
+8. useLayoutEffect : is like useEffect, but the key diff is 
+                useEffect runs after the componenet is painted on screen 
+                useLayoutEffect runs before the component is painted (synchronously, afte render but before paint )
+                This means useLayoutEffect blocks the browser from painting until your code runs — useful when you need to:
+                    Measure DOM layout (like element width/height)
+                    Prevent visual flickering
+                    Work with animations or scrolling positions
+
+
+            'use client'
+            import { useState, useRef, useLayoutEffect } from "react";
+
+            export default function BoxMeasurement() {
+                const boxRef = useRef(null);
+                const [width, setWidth] = useState(0);
+
+                useLayoutEffect(() => {
+                    if (boxRef.current) {
+                        setWidth(boxRef.current.offsetWidth);
+                    }
+                }, []);
+
+                return (
+                    <div className="m-5">
+                        <div 
+                            ref={boxRef} 
+                            className="bg-green-200 px-10 py-4 rounded"
+                        >
+                            Resize Me!
+                        </div>
+                        <p className="mt-3">Box Width: {width}px</p>
+                    </div>
+                );
+            }
+
+
+9. useImperativeHandle : is a hook used with forwardRef() to allow a parent componenet to call functions inside a child component directly
+            You (parent) have a remote control.
+            Your TV (child) has buttons hidden inside.
+            Normally, you can't press those buttons directly.
+            But with useImperativeHandle, you can customize the remote to expose certain buttons (like Volume Up or Power) — only the ones you choose.
+
+    step 1 : create customInput.js and add code 
+            import React, { useRef, useImperativeHandle, forwardRef } from "react";
+
+            const CustomInput = forwardRef((props, ref) => {
+            const inputRef = useRef();
+
+            useImperativeHandle(ref, () => ({
+                focusInput: () => {
+                inputRef.current.focus();
+                },
+                clearInput: () => {
+                inputRef.current.value = "";
+                }
+            }));
+
+            return <input ref={inputRef} className="border p-2" placeholder="Type something..." />;
+            });
+
+            export default CustomInput;
+
+    step 2 : use it in page.js / whatever 
+
+            'use client'
+            import { useRef } from "react";
+            import CustomInput from "./CustomInput";
+
+            export default function Practice() {
+            const inputRef = useRef();
+
+            return (
+                <div className="m-5 space-x-3">
+                <CustomInput ref={inputRef} />
+                <button
+                    onClick={() => inputRef.current.focusInput()}
+                    className="bg-blue-400 px-3 py-1 rounded text-white hover:bg-blue-500"
+                >
+                    Focus
+                </button>
+                <button
+                    onClick={() => inputRef.current.clearInput()}
+                    className="bg-red-400 px-3 py-1 rounded text-white hover:bg-red-500"
+                >
+                    Clear
+                </button>
+                </div>
+            );
+            }
+
+10. useId : is a hook that generates a unique ID that's stable across server and client- especially useful for accessibility attributes(like id and htmlFor) or 
+                form elements where uniqueness is important
+            Imagine you're assigning roll numbers to students. Even if students switch seats (like React re-renders), their roll numbers (IDs) stay consistent.
+
+            'use client'
+            import { useId } from "react";
+
+            export default function FormWithId() {
+                const id = useId(); // generates a unique, stable id
+                console.log("Generated id", id) // view the id at console
+            return (
+                <div className="m-5">
+                <label htmlFor={id} className="block mb-2 font-medium">Your Email:</label>
+                <input
+                    id={id}
+                    type="email"
+                    placeholder="example@mail.com"
+                    className="border px-3 py-1 rounded w-64"
+                />
+                </div>
+            );
+            }
+
+
+------------------------------ Phase 4 : Forms and Input Handling -------------------
+
+1. Controlled Components : A Controlled component is a form element(like input, textarea, or select) whose value is Controlled by react state 
+
+            'use client'
+            import { useState } from 'react';
+
+            export default function ControlledInputExample() {
+                const [name, setName] = useState("");
+
+                function handleChange(event) {
+                    setName(event.target.value);
+                }
+
+                return (
+                    <div className="m-5">
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={handleChange}
+                            placeholder="Type your name"
+                            className="border px-2 py-1 rounded"
+                        />
+                        <p className="mt-2">Hello, {name || "Stranger"}!</p>
+                    </div>
+                );
+            }
+The input box’s value comes from the state, not DOM directly — hence it's "controlled".
+
+
+2. Form Validations and dynamic error messages 
+
+    step 1 : Track errors in state - we'll keep an errors objects in state that holds Validations messages for each field 
+    step 2 : Validate inputs on change or on submit -

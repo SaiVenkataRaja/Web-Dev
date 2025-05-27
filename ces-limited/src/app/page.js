@@ -21,8 +21,8 @@ export default function Home() {
               <button className="text-orange-500 border-2 border-orange-500 px-4 py-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out hover:text-white hover:bg-orange-500">EXPLORE</button>
             </div>
           </div>
-          <div id="imgContainer">
-            <img id="image" src="../images/homepageImages/modernize.webp" />
+          <div id="imgContainer"  className="relative overflow-hidden group rounded-2xl">
+            <img id="image" src="../images/homepageImages/modernize.webp" className="transition-transform duration-500 ease-in-out group-hover:scale-110 w-full rounded-2xl"/>
             <h2 id="headLetter">M</h2>
             <div className="rounded-2xl" id="textContainer">
               <h3 className="mb-5 bg-gray-200 rounded-full">MODERNIZE</h3>
@@ -30,8 +30,8 @@ export default function Home() {
               <button className="text-orange-500 border-2 border-orange-500 px-4 py-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out hover:text-white hover:bg-orange-500">EXPLORE</button>
             </div>
           </div>
-          <div id="imgContainer">
-            <img id="image" src="../images/homepageImages/automate.webp" />
+          <div id="imgContainer"  className="relative overflow-hidden group rounded-2xl">
+            <img id="image" src="../images/homepageImages/automate.webp" className="transition-transform duration-500 ease-in-out group-hover:scale-110 w-full rounded-2xl" />
             <h2 id="headLetter">A</h2>
             <div className="rounded-2xl" id="textContainer">
               <h3 className="mb-5 bg-gray-200 rounded-full">AUTOMATE</h3>
@@ -39,8 +39,8 @@ export default function Home() {
               <button className="text-orange-500 border-2 border-orange-500 px-4 py-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out hover:text-white hover:bg-orange-500">EXPLORE</button>
             </div>
           </div>
-          <div id="imgContainer">
-            <img id="image" src="../images/homepageImages/reinforce.webp" />
+          <div id="imgContainer"  className="relative overflow-hidden group rounded-2xl">
+            <img id="image" src="../images/homepageImages/reinforce.webp" className="transition-transform duration-500 ease-in-out group-hover:scale-110 w-full rounded-2xl"/>
             <h2 id="headLetter">R</h2>
             <div className="rounded-2xl" id="textContainer">
               <h3 className="mb-5 bg-gray-200 rounded-full">REINFORCE</h3>
@@ -48,8 +48,8 @@ export default function Home() {
               <button className="text-orange-500 border-2 border-orange-500 px-4 py-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out hover:text-white hover:bg-orange-500">EXPLORE</button>
             </div>
           </div>
-          <div id="imgContainer">
-            <img id="image" src="../images/homepageImages/transform.webp" />
+          <div id="imgContainer"  className="relative overflow-hidden group rounded-2xl">
+            <img id="image" src="../images/homepageImages/transform.webp" className="transition-transform duration-500 ease-in-out group-hover:scale-110 w-full rounded-2xl"/>
             <h2 id="headLetter">T</h2>
             <div className="rounded-2xl" id="textContainer">
               <h3 className="mb-5 bg-gray-200 rounded-full">TRANFORM</h3>
