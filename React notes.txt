@@ -455,4 +455,84 @@ The input box’s value comes from the state, not DOM directly — hence it's "c
 2. Form Validations and dynamic error messages 
 
     step 1 : Track errors in state - we'll keep an errors objects in state that holds Validations messages for each field 
-    step 2 : Validate inputs on change or on submit -
+    step 2 : Validate inputs on change or on submit -  check if fields are empty and update the errors accordingly 
+    step 3 : Show error messages under inputs dynamically 
+
+        import React, { useState } from "react";
+
+        export default function FormWithValidation() {
+        const [formData, setFormData] = useState({
+            name: "",
+            email: "",
+        });
+
+        const [errors, setErrors] = useState({});
+
+        function handleChange(e) {
+            const { name, value } = e.target;
+            setFormData(prev => ({
+            ...prev,
+            [name]: value,
+            }));
+
+            // Validate on change: Clear error if field is not empty
+            setErrors(prevErrors => ({
+            ...prevErrors,
+            [name]: value.trim() === "" ? "This field is required" : "",
+            }));
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            // Validate all fields on submit
+            const newErrors = {};
+            if (formData.name.trim() === "") newErrors.name = "Name is required";
+            if (formData.email.trim() === "") newErrors.email = "Email is required";
+
+            setErrors(newErrors);
+
+            if (Object.keys(newErrors).length === 0) {
+            alert(`Form submitted!\nName: ${formData.name}\nEmail: ${formData.email}`);
+            // Clear form if needed
+            // setFormData({ name: "", email: "" });
+            }
+        }
+
+        return (
+            <form onSubmit={handleSubmit} className="m-5 max-w-md space-y-4">
+            <div>
+                <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Name"
+                className={`border px-2 py-1 rounded w-full ${errors.name ? "border-red-500" : ""}`}
+                />
+                {errors.name && <p className="text-red-600 mt-1">{errors.name}</p>}
+            </div>
+
+            <div>
+                <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                className={`border px-2 py-1 rounded w-full ${errors.email ? "border-red-500" : ""}`}
+                />
+                {errors.email && <p className="text-red-600 mt-1">{errors.email}</p>}
+            </div>
+
+            <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+                Submit
+            </button>
+            </form>
+        );
+        }
+
+

@@ -95,35 +95,83 @@ import { useId, useLayoutEffect, useReducer, useRef, useState } from "react"
 
 // handling multiple inputs with one state object 
 
-export default function HandleMulti() {
+// export default function HandleMulti() {
+//     const [formData, setFormData] = useState({
+//         name:"",
+//         age:"",
+//         email: "",
+//         password:""
+//     })
+//     function handleChange(e) {
+//         const{name, value} = e.target
+//         setFormData(prevData => ({
+//             ...prevData, [name]:value
+//         }))
+//     }
+//     function handleSubmit(e) {
+//         e.preventDefault()
+//         console.log(`Form submitted :\nName: ${formData.name}\nAge: ${formData.age}\nEmail: ${formData.email}`)
+//         setFormData({name:"", age:"", email:"", password:""})
+//     }
+//     return(
+//         <form onSubmit={handleSubmit} className="m-5 space-y-4 ">
+//             <input type="text" name="name" value={formData.name} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Name"/>
+//             <input type="number" name="age" value={formData.age} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Age"/>
+//             <input type="text" name="email" value={formData.email} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Email"/>
+//             <input type="password" name="password" value={formData.password} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Password"/>
+//             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+//             <h2>Form Submitted</h2>
+//             <p>Name: {formData.name}</p>
+//             <p>Age : {formData.age}</p>
+//             <p>Email : {formData.email}</p>
+//         </form>
+//     )
+// }
+
+
+export default function FormValidations() {
     const [formData, setFormData] = useState({
         name:"",
-        age:"",
-        email: "",
-        password:""
+        email:""
     })
+    const [errors, setErrors] = useState({})
     function handleChange(e) {
-        const{name, value} = e.target
-        setFormData(prevData => ({
-            ...prevData, [name]:value
+        const {name, value} = e.target
+        setFormData(prev => ({
+            ...prev,
+            [name]:value,
+        }))
+         //validate on change: clear error if field is not empty
+        setErrors(prevErrors => ({
+            ...prevErrors, 
+            [name]:value.trim() ===""? "This field is required ": "",
         }))
     }
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(`Form submitted :\nName: ${formData.name}\nAge: ${formData.age}\nEmail: ${formData.email}`)
-        setFormData({name:"", age:"", email:"", password:""})
+        // validate all fields on submit
+        const newErrors = {}
+        if (formData.name.trim() === "") newErrors.name = "Name is required"
+        if (formData.email.trim() === "") newErrors.email = "Email is required"
+
+        setErrors(newErrors)
+
+        if(Object.keys(newErrors).length === 0) {
+            alert(`Form submitted!\nName: ${formData.name}\nEmail: ${formData.email}`);
+            setFormData({ name: "", email: "" });
+        }
     }
+
+
     return(
-        <form onSubmit={handleSubmit} className="m-5 space-y-4 ">
-            <input type="text" name="name" value={formData.name} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Name"/>
-            <input type="number" name="age" value={formData.age} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Age"/>
-            <input type="text" name="email" value={formData.email} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Email"/>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} className="border px-2 py-1 rounded w-full" placeholder="Password"/>
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
-            <h2>Form Submitted</h2>
-            <p>Name: {formData.name}</p>
-            <p>Age : {formData.age}</p>
-            <p>Email : {formData.email}</p>
+        <form onSubmit={handleSubmit} className="m-5 space-y-4">
+            <div>
+                <input type="text" name="name" value={formData.name} onChange={handleChange}  className={`border px-2 py-1 rounded w-full ${errors.name ? "border-red-500" : ""}`}  placeholder="Enter your name "/> 
+                {errors.name && <p className="text-red-600 mt-1">{errors.name}</p>}
+                <input type="text" name="email" value={formData.email} onChange={handleChange} className={`border px-2 py-1 rounded w-full ${errors.email ? "border-red-500" : ""}`} placeholder="Enter your email"/>
+                {errors.email && <p className="text-red-600 mt-1">{errors.email}</p>}
+            </div>
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-400" >Submit</button>
         </form>
     )
 }
