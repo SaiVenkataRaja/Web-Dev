@@ -1,0 +1,247 @@
+React is a frontend javascript library
+Setting up : 
+1. Make sure node is installed , run node -v / npm -v in terminal
+2. Create a next.js app using : 
+    npx create-next-app@latest <name>
+3. Navigate into the folder and start the development server 
+    cd ....
+    npm run dev
+
+
+------------------------------------ Phase 1 : -------------------------------
+1. JSX : javascript + XML - JSX lets us to write html-like sytax directly inside js 
+    write something in src/app/hello/page.js
+
+2. Functional Components : All Components in React (especially in Next.js app router) are written as functions: 
+    function MyComponent() {
+        return <h2>I am a reusable component!</h2>;
+    }
+
+    export default function HelloPage() {
+    return (
+        <div>
+            <h1>Hello, React + Next.js!</h1>
+            <MyComponent />
+        </div>
+    );
+    }
+
+3. Props (Data passed into componenets)
+    Props lets us to pass values into componenets like function arguments 
+    function Greeting(props) {
+        return <p>Hello, {props.name}!</p>;
+    }
+
+    export default function HelloPage() {
+    return (
+        <div>
+        <Greeting name="Sai" />
+        <Greeting name="Venkata" />
+        </div>
+    );
+    }
+
+4. Conditional Rendering : Render things based on a condition (like if-else)
+        function WelcomeMessage({ isLoggedIn }) {
+        return (
+            <div>
+            {isLoggedIn ? <p>Welcome back!</p> : <p>Please log in.</p>}
+            </div>
+        );
+        }
+
+        export default function HelloPage() {
+        return <WelcomeMessage isLoggedIn={true} />;
+        }
+
+5. List Rendering with .map()
+    const names = ["Sai", "Venkata", "Raja"];
+    function NameList() {
+    return (
+        <ul>
+        {names.map((name, index) => (
+            <li key={index}>{name}</li>
+        ))}
+        </ul>
+    );
+    }
+
+    export default function HelloPage() {
+    return (
+        <div>
+        <h2>Name List</h2>
+        <NameList />
+        </div>
+    );
+    }
+
+6. Event Handling 
+    function Button() {
+        const handleClick = () => {
+            alert("Button clicked!");
+    };
+
+    return <button onClick={handleClick}>Click Me</button>;
+    }
+
+    export default function HelloPage() {
+    return <Button />;
+    }
+
+7. Input handling ( with useState )
+        import { useState } from "react";
+
+        export default function Practice() {
+        const [inputText, setInputText] = useState("");
+
+        function handleChange(event) {
+            setInputText(event.target.value);
+        }
+
+        return (
+            <div className="m-10 text-center">
+            <input
+                type="text"
+                placeholder="Type something..."
+                value={inputText}
+                onChange={handleChange}
+                className="border border-gray-400 px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            />
+            <p className="mt-4 font-medium">You typed: {inputText}</p>
+            </div>
+        );
+        }
+
+ 
+------------------------------- Phase 2 : React Hooks ------------------------------ 
+
+1. useState : Keeps track of data that changes over time (like form input, counter, toggle)
+    useState is a react component tgat lets yoy add a state variable to the component
+        import { useState } from 'react';
+        const [state, setState] = useState(initialVal)
+            state is the current value of the state
+            setState is the function to update the value
+            initialVal is the starting value of the state 
+            
+        ex : 
+        'use client'; // Required in Next.js App Router
+
+        import { useState } from 'react';
+
+        export default function Toggle() {
+            const [isVisible, setIsVisible] = useState(true);
+
+            return (
+                <div>
+                <button onClick={() => setIsVisible(!isVisible)}>
+                    Toggle Message
+                </button>
+                {isVisible && <p>This message is toggleable.</p>}
+                </div>
+            );
+        }
+
+2. useEffect (side effect): runs code after the componenet renders - used for API calls, timers, logging etc.
+    useEffect is a react hook that lets you synchronize / rerender a component with an external system 
+    'use client';
+
+    import { useEffect, useState } from 'react';
+
+    export default function Timer() {
+        const [count, setCount] = useState(0);
+
+        useEffect(() => {
+            const timer = setInterval(() => {
+            setCount((prev) => prev + 1);
+            }, 1000);
+
+            return () => clearInterval(timer); // cleanup
+        }, []);
+
+        return <p>Timer: {count}</p>;
+    }
+
+3. useRef (stores non-rendering values) : Think of it like a box you can store stuff in — but changing it doesn’t re-render the component.
+        'use client';
+
+        import { useRef } from 'react';
+
+        export default function InputFocus() {
+        const inputRef = useRef();
+
+        const handleClick = () => {
+            inputRef.current.focus();
+        };
+
+        return (
+            <div>
+            <input ref={inputRef} type="text" placeholder="Click the button to focus" />
+            <button onClick={handleClick}>Focus Input</button>
+            </div>
+        );
+        }
+
+
+--------------------- Phase 3 : Hooks deep dive --------------------------
+
+4. useContext : is a hook that lets us to read and subscribe to context from the component,
+                it provides a way to pass data through tree without manually passing props down through each nested component
+    why useContext is useful : 
+        React normally passes data from parent to child using props, but what if you need the same data in many componenets
+        passing props through many layers is messy,
+        so instead we use , 
+            createContext() to create a shared resource(like user, theme, language)
+            useContext() to access that shared data from any component
+
+  ------- You want all parts of your app (header, footer, product cards) to use the selected theme.
+   But instead of passing the theme to every component manually using props (which gets messy), you use useContext.
+
+
+    step 1 : Create a context file and create the context in it .
+                import { createContext } from "react";
+
+                export const ThemeContext = createContext(); 
+
+    step 2 : In app.js , set up the provider
+        
+            import { useState } from "react";
+            import { ThemeContext } from "./ThemeContext";
+            import Header from "./Header";
+
+            export default function App() {
+            const [theme, setTheme] = useState("light");
+
+            function toggleTheme() {
+                setTheme((prev) => (prev === "light" ? "dark" : "light"));
+            }
+
+            return (
+                <ThemeContext.Provider value={theme}>
+                <div className={theme === "light" ? "bg-white" : "bg-gray-800"}>
+                    <button onClick={toggleTheme} className="m-4 p-2 bg-blue-200">Toggle Theme</button>
+                    <Header />
+                </div>
+                </ThemeContext.Provider>
+            );
+            }
+
+    step 3 : Access it using useContext
+            import { useContext } from "react";
+            import { ThemeContext } from "./ThemeContext";
+
+            export default function Header() {
+            const theme = useContext(ThemeContext); // accessing the current theme
+
+            return (
+                <h1 className={`text-2xl p-4 ${theme === "light" ? "text-black" : "text-white"}`}>
+                This is the Header - Current Theme: {theme}
+                </h1>
+            );
+            }
+
+
+5. useReducer : is similar to useState, it allows for custom state logics
+        usereducer hook accepts two arguments useReducer(<reducer, <initialState>)
+            the reducer function conditions the custom state logic (this decides how to update the state) and the initialState canbe a simple value but generally will contain an object.
+            const [state, dispatch] = useReducer(reducer, initialState)
+                dispatch(action) - triggers the state update
