@@ -241,7 +241,7 @@ export default function Header() {
                         </ul>
                     </li>
                     <li id="navHead">JOBS</li>
-                    <li id="navHead"><Link href='/'>CONTACT</Link></li>
+                    <Link href="../contact"><li id="navHead">CONTACT</li></Link>
                 </ul>
             </div>
             <div id="inputField">

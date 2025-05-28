@@ -1,0 +1,20 @@
+#textcontainer {
+    margin-top: 160px;
+}
+/* #grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+} */
+
+#heading {
+    font-size: 16px;
+    color: gray;
+}
+
+#locs {
+    font-size: 25px;
+}
+#addr {
+    font-size:16px;
+    color: gray;
+}

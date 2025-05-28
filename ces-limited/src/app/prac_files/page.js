@@ -1,5 +1,6 @@
 'use client'
 import { useId, useLayoutEffect, useReducer, useRef, useState } from "react"
+import Header from "../components/header"
 // const initialState = {count:0}
 
 // function reducer(state, action)  {
@@ -82,7 +83,7 @@ import { useId, useLayoutEffect, useReducer, useRef, useState } from "react"
 //     const [name, setName] = useState("")
 //     function handleInput(e) {
 //         setName(e.target.value)
-        
+
 //     }
 //     return(
 //         <div>
@@ -131,20 +132,20 @@ import { useId, useLayoutEffect, useReducer, useRef, useState } from "react"
 
 export default function FormValidations() {
     const [formData, setFormData] = useState({
-        name:"",
-        email:""
+        name: "",
+        email: ""
     })
     const [errors, setErrors] = useState({})
     function handleChange(e) {
-        const {name, value} = e.target
+        const { name, value } = e.target
         setFormData(prev => ({
             ...prev,
-            [name]:value,
+            [name]: value,
         }))
-         //validate on change: clear error if field is not empty
+        //validate on change: clear error if field is not empty
         setErrors(prevErrors => ({
-            ...prevErrors, 
-            [name]:value.trim() ===""? "This field is required ": "",
+            ...prevErrors,
+            [name]: value.trim() === "" ? "This field is required " : "",
         }))
     }
     function handleSubmit(e) {
@@ -156,22 +157,25 @@ export default function FormValidations() {
 
         setErrors(newErrors)
 
-        if(Object.keys(newErrors).length === 0) {
+        if (Object.keys(newErrors).length === 0) {
             alert(`Form submitted!\nName: ${formData.name}\nEmail: ${formData.email}`);
             setFormData({ name: "", email: "" });
         }
     }
 
 
-    return(
-        <form onSubmit={handleSubmit} className="m-5 space-y-4">
-            <div>
-                <input type="text" name="name" value={formData.name} onChange={handleChange}  className={`border px-2 py-1 rounded w-full ${errors.name ? "border-red-500" : ""}`}  placeholder="Enter your name "/> 
-                {errors.name && <p className="text-red-600 mt-1">{errors.name}</p>}
-                <input type="text" name="email" value={formData.email} onChange={handleChange} className={`border px-2 py-1 rounded w-full ${errors.email ? "border-red-500" : ""}`} placeholder="Enter your email"/>
-                {errors.email && <p className="text-red-600 mt-1">{errors.email}</p>}
-            </div>
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-400" >Submit</button>
-        </form>
+    return (
+        <div>
+            <Header />
+            <form onSubmit={handleSubmit} className="m-5 space-y-4">
+                <div>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} className={`border px-2 py-1 rounded w-full ${errors.name ? "border-red-500" : ""}`} placeholder="Enter your name " />
+                    {errors.name && <p className="text-red-600 mt-1">{errors.name}</p>}
+                    <input type="text" name="email" value={formData.email} onChange={handleChange} className={`border px-2 py-1 rounded w-full ${errors.email ? "border-red-500" : ""}`} placeholder="Enter your email" />
+                    {errors.email && <p className="text-red-600 mt-1">{errors.email}</p>}
+                </div>
+                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-400" >Submit</button>
+            </form>
+        </div>
     )
 }
