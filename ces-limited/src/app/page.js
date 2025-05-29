@@ -5,7 +5,7 @@ import Head from "next/head";
 export default function Home() {
   return (
     <div>
-      <Header />
+     
 
       <div className="px-10 py-10">
 

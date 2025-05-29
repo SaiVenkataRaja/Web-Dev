@@ -3,7 +3,7 @@ import "../styles/footer.css"
 
 export default function Footer() {
     return (
-        <div className="px-14 py-10 border-b-gray-2">
+        <div className="px-14 py-10 border-b-gray-2 bg-gray-100">
             <Link href="/"><img src="../images/ces_logo_blue.webp" /></Link>
             <div className="container">
                 <div>

@@ -1,10 +1,15 @@
+'use client'
 import "../styles/contact.css"
 import "../components/footerTop"
 import FooterTop from "../components/footerTop"
 import Footer from "../components/footer"
-export default function Contact() {
-    return (
+import Connect from "../components/connect"
+import { useState } from "react"
 
+export default function Contact() {
+    const [isBoxOpen, setisBoxOpen] = useState(false)
+    
+    return (
         <div className="justify-items-center my-10">
             <p className="text-sm text-gray-400"> CES / <span className="text-black">CONTACT</span></p>
             <div className="relative overflow-hidden group">
@@ -128,7 +133,8 @@ export default function Contact() {
                        TX 75041</p>
                 </div>
             </div>
-            <FooterTop />
+            <FooterTop setisBoxOpen={setisBoxOpen}/>
+            <Connect isOpen={isBoxOpen} onClose={() => setisBoxOpen(false)}/>
             <Footer />
         </div>
     )
