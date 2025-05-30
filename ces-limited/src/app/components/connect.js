@@ -45,9 +45,9 @@ export default function Connect({ isOpen, onClose }) {
                     <p className="text-xl">Kindly provide your details, we will reach you shortly.</p>
                     <input type="text" name="name" placeholder="*Full Name" onChange={handleChange} className={`border-b-1 border-gray-300 pb-3 focus:outline-none  ${errors.name ? "border-red-500" : ""}`}/>
                     {errors.name && <p className="text-red-600 text-xs">{errors.name}</p>}
-                    <input name="email" placeholder="*Email Address" onChange={handleChange} className={`border-b-1 border-gray-300 pb-3 focus:outline-none  ${errors.age ? "border-red-500" : ""}`} />
+                    <input name="email" placeholder="*Email Address" onChange={handleChange} className={`border-b-1 border-gray-300 pb-3 focus:outline-none  ${errors.email ? "border-red-500" : ""}`} />
                     {errors.email && <p className="text-red-600 text-xs">{errors.email}</p>}
-                    <input name="message" placeholder="*Message" onChange={handleChange} className={`border-b-1 border-gray-300 pb-3 focus:outline-none  ${errors.email ? "border-red-500" : ""}`}/>
+                    <input name="message" placeholder="*Message" onChange={handleChange} className={`border-b-1 border-gray-300 pb-3 focus:outline-none  ${errors.message ? "border-red-500" : ""}`}/>
                     {errors.message && <p className="text-red-600 text-xs">{errors.message}</p>}
                     <button type="submit" className="cursor-pointer font-bold text-orange-600 border-1 border-orange-500 mx-45  py-2 hover:bg-orange-500 hover:text-white rounded-full transition-all duration-200 ease-in-out">SUBMIT</button>
                 </div>

@@ -136,7 +136,7 @@ export default function Contact() {
             </div>
             <FooterTop setisBoxOpen={setisBoxOpen}/>
             <Connect isOpen={isBoxOpen} onClose={() => setisBoxOpen(false)}/>
-            <ReachOut isOpen={isReachOut} onClose={() => setIsReachOpen(false)}/>
+            <ReachOut isOpen={isReachOut} onClose={() => setIsReachOut(false)}/>
             <Footer />
         </div>
     )
