@@ -4,18 +4,19 @@ import "../components/footerTop"
 import FooterTop from "../components/footerTop"
 import Footer from "../components/footer"
 import Connect from "../components/connect"
+import ReachOut from "../components/reachOut"
 import { useState } from "react"
 
 export default function Contact() {
     const [isBoxOpen, setisBoxOpen] = useState(false)
-    
+    const [isReachOut, setIsReachOut] = useState(false)
     return (
         <div className="justify-items-center my-10">
             <p className="text-sm text-gray-400"> CES / <span className="text-black">CONTACT</span></p>
             <div className="relative overflow-hidden group">
                 <img className="my-10 rounded-4xl" src="../images/contactPageImage.webp" />
                 <div className="absolute inset-0 flex items-center justify-center" id="textcontainer">
-                    <h3 className="bg-white text-5xl mt-40 px-5 py-4 rounded-3xl ">From Anywhere to Everywhere -<br></br>  We’re Right Here.<span className="text-orange-500 border-b-2 hover:border-none cursor-pointer">Reach Out.</span></h3>
+                    <h3 className="bg-white text-5xl mt-40 px-5 py-4 rounded-3xl ">From Anywhere to Everywhere -<br></br>  We’re Right Here.<button onClick={() => setIsReachOut(true)} className="text-orange-500 border-b-2 hover:border-none cursor-pointer">Reach Out.</button></h3>
                 </div>
             </div>
             <div id="grid-container" className=" grid grid-cols-2 space-x-50 my-10">
@@ -135,6 +136,7 @@ export default function Contact() {
             </div>
             <FooterTop setisBoxOpen={setisBoxOpen}/>
             <Connect isOpen={isBoxOpen} onClose={() => setisBoxOpen(false)}/>
+            <ReachOut isOpen={isReachOut} onClose={() => setIsReachOpen(false)}/>
             <Footer />
         </div>
     )
