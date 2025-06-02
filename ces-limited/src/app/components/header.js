@@ -115,7 +115,7 @@ export default function Header() {
     return (
         <div className="flex px-14 py-10">
             <Link href="/">
-                <img src="../images/ces_logo_blue.webp" />
+                <img src="../images/ces_logo_blue.webp" alt="CES-Limited"/>
             </Link>
             <div>
                 <ul className="flex space-x-14 ml-20 pt-5 cursor-pointer relative">
@@ -231,11 +231,11 @@ export default function Header() {
                         <ul className="dropdown-menu" id="aboutDrop">
                             <li><h2 id="dropHead" className="space-x-10"></h2>
                                 <ul id="navslist">
-                                    <Link href="./about/company" id="navItem">Company</Link>
-                                    <p id="navItem">Leadership</p>
-                                    <p id="navItem">Culture</p>
-                                    <p id="navItem">Employees</p>
-                                    <p id="navItem">Investor</p>
+                                    <Link href="/about/company" ><p id="navItem">Company</p></Link>
+                                    <Link href="/about/leadership"><p id="navItem">Leadership</p></Link>
+                                    <Link href="/about/culture"><p id="navItem">Culture</p></Link>
+                                    <Link target="_blank" href="https://ceslimited.greythr.com/uas/portal/auth/login?login_challenge=581860a9ecd94a049868b229e04ec947"><p id="navItem">Employees</p></Link>
+                                    <Link href="https://cesltd.com/investors/"><p id="navItem">Investor</p></Link>
                                 </ul>
                             </li>
                         </ul>

@@ -1,4 +1,12 @@
+'use client'
+import Connect from "@/app/components/connect"
+import Footer from "@/app/components/footer"
+import FooterTop from "@/app/components/footerTop"
+import { useState } from "react"
+
 export default function Company() {
+    const [openTab, setOpenTab] = useState("Support")
+    const [isBoxOpen, setisBoxOpen] = useState(false)
     const data = {
         "Support": {
             heading: "The Backbone of Business Stability",
@@ -7,6 +15,15 @@ export default function Company() {
                 "24/7 Application & Cloud Monitoring",
                 "Managed Services For SAP, Oracle, Salesforce & Workday",
                 "Compliance & Data Security Assurance"
+            ]
+        },
+        "Modernize": {
+            heading: "Breaking Free from Outdated Systems",
+            info: [
+                "SAP S/4HANA & Oracle Cloud Migrations",
+                "AI-Driven Financial & Compliance Automation",
+                "Cloud-Native Transformation for Scalability",
+                "Next-Gen Data Management & Analytics"
             ]
         },
         "Automate": {
@@ -65,16 +82,55 @@ export default function Company() {
                     <h1 className="text-5xl py-7">Our DNA: The SMART Approach</h1>
                     <p className="text-gray-500 text-xl pb-20">Our SMART framework is engineered to align with real business challenges, empowering <br></br>organizations to scale, innovate, and lead with confidence.</p>
                 </div>
-                <div className="flex bg-white mx-20 rounded-xl py-2 "   >
-                    <div className="w-1/4">
-
+                <div className="flex bg-white mx-20   "   >
+                    <div className="w-1/4 ">
+                        {Object.keys(data).map((key) => (
+                            <div key={key} onClick={() => setOpenTab(key)} className={`cursor-pointer py-4 px-6 text-lg  bg-gray-100 ${openTab == key ? "text-black border-b-4 border-orange-300 bg-white" : "text-gray-500"}`}>
+                                {key === "Support" ? "S - Support" :
+                                    key === "Modernize" ? "M - Modernize" :
+                                        key === "Automate" ? "A - Automate" :
+                                            key === "Reinforce" ? "R - Reinforce" :
+                                                "T - Transform"}
+                            </div>
+                        ))}
                     </div>
-                    <div className="w-3/4">
-2
+                    <div className="w-3/4 p-10">
+                        <h2 className="text-3xl pb-10">{data[openTab].heading}</h2>
+                        <ul>
+                            {data[openTab].info.map((point, index) => (
+                                <li key={index} className="flex items-center py-1 text-gray-500 text-xl">
+                                    <span className="text-orange-500 mr-3">✔ </span>
+                                    {point}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>
-
+            <div className="mb-40 px-14">
+                <h1 className="text-center py-16 text-5xl">Why CES, Why Not?</h1>
+                <div className="flex text-center">
+                    <div className="border-1 border-dashed border-black w-1/4 flex flex-col items-center py-10 rounded-xl ">
+                        <img className="" src="../images/companyPage/con1.webp" />
+                        <p className="px-4 pt-4 text-xl text-gray-500">20+ Years of delivering <br></br>impact-driven technology<br></br> solutions</p>
+                    </div>
+                    <div className="border-1 border-dashed border-black w-1/4 flex flex-col items-center py-10 rounded-xl">
+                        <img src="../images/companyPage/con2.webp" />
+                        <p className="px-4 pt-4 text-xl text-gray-500"> Fortune 500 clients across multiple industries</p>
+                    </div>
+                    <div className="border-1 border-dashed border-black w-1/4 flex flex-col items-center py-10 rounded-xl">
+                        <img src="../images/companyPage/con3.webp" />
+                        <p className="px-4 pt-4 text-xl text-gray-500" >Expertise spanning Cloud,<br></br> ERP, AI, RPA, Cybersecurity<br></br> & Digital Transformation</p>
+                    </div>
+                    <div className="border-1 border-dashed border-black w-1/4 flex flex-col items-center py-10 rounded-xl">
+                        <img src="../images/companyPage/con4.webp" />
+                        <p className="px-4 pt-4 text-xl text-gray-500">A SMART-driven approach <br></br>that turns challenges into<br></br> competitive advantages</p>
+                    </div>
+                </div>
+            </div>
+            <FooterTop setisBoxOpen={setisBoxOpen}/>
+            <Connect isOpen={isBoxOpen} onClose={() => setisBoxOpen(false)}/>
+            <Footer />
         </div>
     )
 }
