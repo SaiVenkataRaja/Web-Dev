@@ -206,8 +206,8 @@ export default function Header() {
                         <ul className="dropdown-menu" id="capdrop">
                             <li><h2 id="dropHead">BLOGS</h2>
                                 <ul id="navslist">
-                                    <p id="navItem">AI & Computer Vision for...</p>
-                                    <p id="navItem">Accelerate Your S/4HANA Journey with...</p>
+                                    <Link href="/insights/aiComp"><p id="navItem">AI & Computer Vision for...</p></Link>
+                                    <Link href="/insights/accelarate"><p id="navItem">Accelerate Your S/4HANA Journey with...</p></Link>
                                     <p id="navItem">CES Data Migration Suite: A...</p>
                                 </ul>
                             </li>
