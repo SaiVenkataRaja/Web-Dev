@@ -1,6 +1,13 @@
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 export default function ReachOut({isOpen, onClose}) {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "auto"
+        }
+    })
      const [formData, setFormData] = useState({
             name:"",
             email:"",

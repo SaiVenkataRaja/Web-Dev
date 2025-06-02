@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from "react"
 export default function Connect({ isOpen, onClose }) {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "auto"
+        }
+    })
     const [formData, setFormData] = useState({
         name:"",
         email:"",

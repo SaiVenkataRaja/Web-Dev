@@ -19,8 +19,10 @@
     background-color: white;
     border-radius: 8px;
     padding: 10px 0;
-    padding-top: 50px;
+    /* padding-top: 50px; */
     z-index: 50;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
 }
 #navHead:hover .dropdown-menu {
     display: flex; /* Show the dropdown when hovering over the parent item */

@@ -119,7 +119,7 @@ export default function Header() {
             </Link>
             <div>
                 <ul className="flex space-x-14 ml-20 pt-5 cursor-pointer relative">
-                    <li id="navHead" className="relative">CAPABILITIES
+                    <li id="navHead" className="relative ">CAPABILITIES
                         <ul className="dropdown-menu" id="capdrop">
                             <li><h2 id="dropHead">BUSINESS SERVICES</h2>
                                 <ul id="navslist">
@@ -231,7 +231,7 @@ export default function Header() {
                         <ul className="dropdown-menu" id="aboutDrop">
                             <li><h2 id="dropHead" className="space-x-10"></h2>
                                 <ul id="navslist">
-                                    <p id="navItem">Company</p>
+                                    <Link href="./about/company" id="navItem">Company</Link>
                                     <p id="navItem">Leadership</p>
                                     <p id="navItem">Culture</p>
                                     <p id="navItem">Employees</p>
